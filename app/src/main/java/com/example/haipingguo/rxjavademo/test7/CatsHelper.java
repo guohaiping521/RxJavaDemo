@@ -17,7 +17,7 @@ import io.reactivex.functions.Function;
 public class CatsHelper {
     Api mApi = new Api();
 
-    public void abc(final String quary) {
+    public Observable abc(final String quary) {
         Observable.create(new ObservableOnSubscribe<List<Cat>>() {
             @Override
             public void subscribe(final ObservableEmitter<List<Cat>> observableEmitter) throws Exception {
@@ -49,6 +49,7 @@ public class CatsHelper {
                             public void onResult(Uri result) {
                                 observableEmitter.onNext(result);
                             }
+
                             @Override
                             public void onError(Exception e) {
                                 observableEmitter.onError(e);
@@ -65,7 +66,7 @@ public class CatsHelper {
 
             @Override
             public void onNext(Uri uri) {
-                Log.i("ghpppp","uri===="+uri);
+                Log.i("ghpppp", "uri====" + uri);
             }
 
             @Override
@@ -78,6 +79,7 @@ public class CatsHelper {
 
             }
         });
+        return null;
     }
 
     public AsyncJob<Uri> saveCutestCat(final String query) {

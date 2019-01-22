@@ -8,7 +8,6 @@ import java.util.List;
 public class CatsHelper {
     Api mApi = new Api();
 
-    /*通用回调*/
     public void saveTheCutestCat(String query, final ApiI.Callback<Uri> callback) {
         mApi.queryCats(query, new ApiI.Callback<List<Cat>>() {
             @Override
@@ -27,13 +26,11 @@ public class CatsHelper {
 
                 });
             }
-
             @Override
             public void onError(Exception e) {
                 callback.onError(e);
             }
         });
-
     }
 
     private Cat findCutest(List<Cat> cats) {

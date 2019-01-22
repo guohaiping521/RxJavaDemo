@@ -8,10 +8,10 @@ import java.util.List;
 
 public class Api implements ApiI {
     @Override
-    public AsyncJob<List<Cat>> queryCats(String query) {
-        return new AsyncJob<List<Cat>>() {
+    public Observable<List<Cat>> queryCats(String query) {
+        return new Observable<List<Cat>>() {
             @Override
-            public void start(Callback<List<Cat>> callback) {
+            public void subscribe(Callback<List<Cat>> callback) {
                 List<Cat> catList=new ArrayList<>();
                 catList.add(new Cat(0));
                 catList.add(new Cat(1));
@@ -22,20 +22,20 @@ public class Api implements ApiI {
     }
 
     @Override
-    public AsyncJob<Cat> findCutest(final List<Cat> catList) {
-        return new AsyncJob<Cat>() {
+    public Observable<Cat> findCutest(final List<Cat> catList) {
+        return new Observable<Cat>() {
             @Override
-            public void start(Callback<Cat> callback) {
+            public void subscribe(Callback<Cat> callback) {
                 callback.onResult(findCatest(catList));
             }
         };
     }
 
     @Override
-    public AsyncJob<Uri> store(Cat cat) {
-        return new AsyncJob<Uri>() {
+    public Observable<Uri> store(Cat cat) {
+        return new Observable<Uri>() {
             @Override
-            public void start(Callback<Uri> callback) {
+            public void subscribe(Callback<Uri> callback) {
                 callback.onResult(Uri.parse("被保存的url"));
             }
         };

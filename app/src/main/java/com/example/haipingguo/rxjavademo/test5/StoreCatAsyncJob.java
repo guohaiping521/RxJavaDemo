@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 /*找出所有猫的类*/
-public class StoreCatAsyncJob extends AsyncJob<Uri>{
+public class StoreCatAsyncJob extends Observable<Uri> {
 
     private Api mApi=new Api();
     private List<Cat> mCatList=new ArrayList<>();
@@ -20,9 +20,9 @@ public class StoreCatAsyncJob extends AsyncJob<Uri>{
     }
 
     @Override
-    public void start(final Callback<Uri> callback) {
+    public void subscribe(final Callback<Uri> callback) {
         Cat cat = findCutest(mCatList);
-        mApi.store(cat).start(new Callback<Uri>() {
+        mApi.store(cat).subscribe(new Callback<Uri>() {
             @Override
             public void onResult(Uri result) {
                 callback.onResult(result);

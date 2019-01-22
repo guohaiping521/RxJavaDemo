@@ -13,11 +13,15 @@ public class CatsHelper {
         void onQueryFailed(Exception e);
     }
 
-    /*加上回调*/
+    /**
+     * 加上回调
+     * @param query
+     * @param cutestCatCallback
+     */
     public void saveTheCutestCat(String query, final CutestCatCallback cutestCatCallback) {
-        mApi.queryCats(query, new ApiI.CatsQueryCallback() {
+        mApi.queryCats(query, new ApiI.CatsQueryCallback() {//---回调
             @Override
-            public void onCatListReceived(List<Cat> cats) {
+            public void onCatListReceived(List<Cat> cats) {//进行处理数据
                 Cat cutest = findCutest(cats);
                 Uri uri = mApi.store(cutest);
                 cutestCatCallback.onCutestCatSaved(uri);

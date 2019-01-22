@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface ApiI {
 
-    AsyncJob<List<Cat>> queryCats(String query);
-    AsyncJob<Uri> store(Cat cat);
+    Observable<List<Cat>> queryCats(String query);
+    Observable<Uri> store(Cat cat);
 }
 
 

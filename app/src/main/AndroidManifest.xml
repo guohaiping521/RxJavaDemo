@@ -12,8 +12,22 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data
+                    android:scheme="homework"
+                    android:host="com.baidu.homework"
+                    android:path="/web"/>
+                <data
+                    android:host="com.baidu.homework"
+                    android:path="/web"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
     </application>

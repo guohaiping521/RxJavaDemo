@@ -4,7 +4,7 @@ import android.net.Uri;
 
 import java.util.List;
 
-public class ShowCatUriAsyncJob extends AsyncJob<Uri> {
+public class ShowCatUriAsyncJob extends Observable<Uri> {
 
     private String mQuery;
 
@@ -14,15 +14,15 @@ public class ShowCatUriAsyncJob extends AsyncJob<Uri> {
     }
 
     @Override
-    public void start(final Callback<Uri> callback) {
+    public void subscribe(final Callback<Uri> callback) {
         QuestAllCatAsyncJob questAllCatAsyncJob = new QuestAllCatAsyncJob();
         questAllCatAsyncJob.setQuery(mQuery);
-        questAllCatAsyncJob.start(new Callback<List<Cat>>() {
+        questAllCatAsyncJob.subscribe(new Callback<List<Cat>>() {
             @Override
             public void onResult(List<Cat> result) {
                 StoreCatAsyncJob storeCatAsyncJob = new StoreCatAsyncJob();
                 storeCatAsyncJob.setCatList(result);
-                storeCatAsyncJob.start(new Callback<Uri>() {
+                storeCatAsyncJob.subscribe(new Callback<Uri>() {
                     @Override
                     public void onResult(Uri result) {
                         callback.onResult(result);

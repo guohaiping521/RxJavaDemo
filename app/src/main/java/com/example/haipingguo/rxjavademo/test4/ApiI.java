@@ -9,7 +9,6 @@ public interface ApiI {
         void onResult(T result);
         void onError(Exception e);
     }
-
     void queryCats(String query, Callback<List<Cat>> catsQueryCallback);
     void store(Cat cat, Callback<Uri> storeCallback);
 }

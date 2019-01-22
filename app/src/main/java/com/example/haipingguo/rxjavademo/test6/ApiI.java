@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ApiI {
 
-    AsyncJob<List<Cat>> queryCats(String query);
-    AsyncJob<Cat> findCutest(List<Cat> catList);
-    AsyncJob<Uri> store(Cat cat);
+    Observable<List<Cat>> queryCats(String query);
+    Observable<Cat> findCutest(List<Cat> catList);
+    Observable<Uri> store(Cat cat);
 }
 
 
