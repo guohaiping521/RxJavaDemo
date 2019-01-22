@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxjavaDemo {
     public void testRxjava() {
-        Observable.create(new ObservableOnSubscribe<String>() {
+       /* Observable.create(new ObservableOnSubscribe<String>() {
 
             @Override
             public void subscribe(ObservableEmitter e) {
@@ -39,6 +39,6 @@ public class RxjavaDemo {
             public void onComplete() {
 
             }
-        });
+        });*/
     }
 }

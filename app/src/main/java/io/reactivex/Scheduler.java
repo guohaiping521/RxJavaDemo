@@ -195,13 +195,9 @@ public abstract class Scheduler {
     @NonNull
     public Disposable scheduleDirect(@NonNull Runnable run, long delay, @NonNull TimeUnit unit) {
         final Worker w = createWorker();
-
         final Runnable decoratedRun = RxJavaPlugins.onSchedule(run);
-
         DisposeTask task = new DisposeTask(decoratedRun, w);
-
         w.schedule(task, delay, unit);
-
         return task;
     }
 

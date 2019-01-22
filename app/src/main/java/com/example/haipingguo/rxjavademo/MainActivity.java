@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.haipingguo.rxjavademo.rxdemo.TestRxDemo;
 import com.example.haipingguo.rxjavademo.thread.TestCallable;
 
 import io.reactivex.Observable;
@@ -35,8 +34,45 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Obserab
-                /*Observable.create(new ObservableOnSubscribeI<String>() {
+                Observable.create(new ObservableOnSubscribe<String>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                        emitter.onNext("1");
+                        emitter.onNext("2");
+                        emitter.onNext("3");
+                        emitter.onComplete();
+                    }
+                }).subscribeOn(Schedulers.newThread())
+                        .subscribe(new Observer<String>() {
+
+                            private Disposable disposable;
+
+
+
+                            @Override
+                            public void onSubscribe(Disposable d) {
+                                disposable=d;
+                            }
+
+                            @Override
+                            public void onNext(String s) {
+                                if("2".equals(s)){
+                                    disposable.dispose();
+                                }
+                                Log.i("ghppppp","s=="+s);
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.i("ghppppp","onError");
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                Log.i("ghppppp","onComplete");
+                            }
+                        });
+               /* Observable.create(new ObservableOnSubscribeI<String>() {
                     @Override
                     public void subscribe(ObservableEmitter<String> emitter) {
                         emitter.onNext("1");
@@ -71,9 +107,9 @@ public class MainActivity extends AppCompatActivity {
                             public void onComplete() {
                                 Log.i("ghppppp","onComplete");
                             }
-                        });*/
+                        });
               //  TestRxDemo.requestNetData();
-                /*Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("homework://com.baidu.homework/web?url=https://www.zybang.com/stucenter/na/order/detailv3?purchaseOrderId=243158604&appid=homework"));
+                Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("homework://com.baidu.homework/web?url=https://www.zybang.com/stucenter/na/order/detailv3?purchaseOrderId=243158604&appid=homework"));
                 startActivity(intent);*/
             }
         });

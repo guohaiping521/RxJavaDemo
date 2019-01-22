@@ -47,7 +47,6 @@ public final class SingleScheduler extends Scheduler {
 
         SINGLE_THREAD_FACTORY = new RxThreadFactory(THREAD_NAME_PREFIX, priority, true);
     }
-
     public SingleScheduler() {
         this(SINGLE_THREAD_FACTORY);
     }
