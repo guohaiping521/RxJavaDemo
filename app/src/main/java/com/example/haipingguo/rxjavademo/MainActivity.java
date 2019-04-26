@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Obserab
                 /*Observable.create(new ObservableOnSubscribeI<String>() {
                     @Override
                     public void subscribe(ObservableEmitter<String> emitter) {
@@ -73,16 +72,14 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });*/
               //  TestRxDemo.requestNetData();
-                /*Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("homework://com.baidu.homework/web?url=https://www.zybang.com/stucenter/na/order/detailv3?purchaseOrderId=243158604&appid=homework"));
-                startActivity(intent);*/
+             
             }
         });
 
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("airclass://com.zuoyebang.airclass/web?url=https://www.zybang.com/stucenter/na/order/detailv3?purchaseOrderId=243158604&appid=homework"));
-                startActivity(intent);*/
+            
             }
         });
 
